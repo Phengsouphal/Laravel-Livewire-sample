@@ -4,6 +4,7 @@ use App\Http\Livewire\Auth\Login;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Auth\Register;
 use App\Http\Livewire\Dashboard;
+use App\Http\Livewire\PlantList;
 use App\Http\Livewire\Profile;
 
 /*
@@ -22,6 +23,7 @@ Route::redirect('/', 'dashboard');
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
     Route::get('/profile', Profile::class);
+    Route::get('/plants', PlantList::class);
 });
 
 

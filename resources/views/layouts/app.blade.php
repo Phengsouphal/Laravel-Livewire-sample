@@ -35,7 +35,7 @@
                         </div>
                         <nav class="mt-5 px-2 space-y-1">
                             <a href="/dashboard"
-                                class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-white bg-indigo-900 focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150">
+                                class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-white bg-indigo-900 focus:outline-none transition ease-in-out duration-150">
                                 <svg class="mr-4 h-6 w-6 text-indigo-400 group-hover:text-indigo-300 group-focus:text-indigo-300 transition ease-in-out duration-150"
                                     stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -43,6 +43,14 @@
                                     </path>
                                 </svg>
                                 Dashboard
+                            </a>
+                        </nav>
+                        <nav class="mt-5 px-2 space-y-1">
+                            <a href="/plants"
+                                class="group flex items-center px-2 py-2 text-base leading-6 font-medium rounded-md text-white bg-indigo-900 focus:outline-none transition ease-in-out duration-150 {{request()->is('plants') ? 'bg-indigo-700' : ''}}">
+                                <x-icon.plant
+                                    class="fill-white mr-3 h-6 w-6 text-indigo-400 group-focus:text-indigo-300 transition ease-in-out duration-150" />
+                                Plants
                             </a>
                         </nav>
                     </div>
@@ -83,7 +91,7 @@
                     <!-- Sidebar component, swap this element with another sidebar if you like -->
                     <nav class="mt-5 space-y-1 flex-1 px-2 bg-indigo-800">
                         <a href="/dashboard"
-                            class="group flex items-center px-2 py-2 text-sm leading-5 font-medium text-white rounded-md bg-indigo-900 focus:outline-none focus:bg-indigo-700 transition ease-in-out duration-150">
+                            class="{{request()->is('dashboard') ? 'bg-indigo-700' : 'bg-indigo-900'}} group flex items-center px-2 py-2 text-sm leading-5 font-medium text-white rounded-md focus:outline-none transition ease-in-out duration-150">
                             <svg class="mr-3 h-6 w-6 text-indigo-400 group-focus:text-indigo-300 transition ease-in-out duration-150"
                                 stroke="currentColor" fill="none" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -92,7 +100,15 @@
                             </svg>
                             Dashboard
                         </a>
+                        <a href="/plants"
+                            class="{{request()->is('plants') ? 'bg-indigo-700' : 'bg-indigo-900'}} group flex items-center px-2 py-2 text-sm leading-5 font-medium text-white rounded-md  focus:outline-none transition ease-in-out duration-150">
+
+                            <x-icon.plant
+                                class="mr-3 h-6 w-6 text-indigo-400 group-focus:text-indigo-300 transition ease-in-out duration-150" />
+                            Plants
+                        </a>
                     </nav>
+
                 </div>
 
                 <div class="flex-shrink-0 flex border-t border-indigo-700 p-4">

@@ -1,8 +1,8 @@
 <div>
     <h1 class="text-2xl font-semibold text-gray-900">Dashboard</h1>
-    <x-button.primary wire:click="showNotification()">
+    {{-- <x-button.primary wire:click="showNotification()">
         showNotification
-    </x-button.primary>
+    </x-button.primary> --}}
     <div class="py-4 space-y-4">
         <div class="flex justify-between">
             <div class="w-2/4 flex space-x-4">
@@ -153,7 +153,6 @@
                     </x-table.row>
                     @endif
 
-                    @JSON($selected)
 
                     @forelse ($transactions as $item)
                     <x-table.row wire:loading.class.delay="opacity-50" wire:key="row-{{$item->id}}">

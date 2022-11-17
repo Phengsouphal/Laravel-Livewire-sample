@@ -1,6 +1,11 @@
 <?php
 
-use Illuminate\Http\Request;
+use App\Http\Controllers\Api\NotificationController;
+use App\Http\Controllers\Api\PlantsController;
+use App\Http\Controllers\Api\TransactionController;
+use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\WelcomeInfoController;
+use App\Models\WelcomeInfo;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +19,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+Route::get('getWelComeInfo', [WelcomeInfoController::class, 'index']);
+
+Route::get('addWelComInfo', function () {
+    WelcomeInfo::create([
+        'title' => 'Test 2',
+        'description' => 'Test 2',
+        'thumbnail' => 'Test 2',
+    ]);
+    // Uses Auth Middleware
+});
+
+Route::post('register', [UserController::class, 'register']);
+Route::post('login', [UserController::class, 'login']);
+
+Route::group(['middleware' => 'auth:api'], function () {
+    Route::get('getSpecialOffers', [PlantsController::class, 'getSpecialOffers']);
+
+    Route::get('getPlantList', [PlantsController::class, 'index']);
+    Route::post('getTransactionList', [TransactionController::class, 'getTransactionList']);
+    //add more Routes here
+
+    Route::post('getNotificationList', [NotificationController::class, 'getNotificationList']);
 });

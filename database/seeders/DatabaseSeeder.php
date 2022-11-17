@@ -4,6 +4,8 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
+use App\Models\Notification;
+use App\Models\Plants;
 use App\Models\Transaction;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -25,7 +27,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'ddd@example.com',
             'password' => Hash::make('dddddd'),
         ]);
+        Transaction::factory()->count(100)->create();
 
-        Transaction::factory()->count(11250)->create();
+        Plants::factory()->count(150)->create();
+        Notification::factory()->count(100)->create();
     }
 }
